@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('partials/imports') %>
+    <title>404 - Not Found 🔍</title>
+  </head>
+
+  <body>
+    <%- include('partials/header') %>
+    <main>
+      <section class="container mx-auto">
+        <section class="hero min-h-[80vh]">
+          <div class="hero-content flex-col lg:flex-row gap-10">
+            <!-- Left: Image -->
+            <img
+              src="/images/404.png"
+              alt="404 Illustration"
+              class="max-w-sm w-full order-1"
+            />
+
+            <!-- Right: Text -->
+            <div class="order-2">
+              <h1 class="text-8xl font-bold text-warning">404 :/</h1>
+              <p class="py-4 text-lg text-base-content/80">
+                <%= message || "Where are my contacts, I can't find anything!!!" %>
+              </p>
+              <a href="/" class="btn btn-warning mt-4">Go Home</a>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

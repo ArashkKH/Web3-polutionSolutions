@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<%- include('partials/imports') %>
+		<title>Projects</title>
+	</head>
+
+	<body class="bg-base-100">
+        <%- include('partials/header') %>
+
+		<!-- Hero -->
+		<section class="hero min-h-[40vh] bg-base-200 text-center">
+			<div class="hero-content flex-col">
+				<h1 class="text-5xl font-bold text-primary mb-4">Projects</h1>
+				<p class="text-lg text-base-content/80 mb-4">
+					Browse projects by sector or explore all available solutions.
+				</p>
+
+				<!-- Sector Links -->
+				<div class="flex flex-wrap justify-center gap-3">
+                    <a
+						href="/solutions/projects"
+						class="btn btn-outline btn-primary"
+						>All</a
+					>
+					<% sectors.forEach(sector => { %>
+					<a
+						href="/solutions/projects?sector=<%= encodeURIComponent(sector) %>"
+						class="btn btn-outline btn-primary"
+						><%= sector %></a
+					>
+					<% }); %>
+				</div>
+			</div>
+		</section>
+
+		<!-- Project List -->
+		<section class="max-w-6xl mx-auto px-6 py-12">
+			<% if (projects && projects.length > 0) { %>
+			<div class="overflow-x-auto">
+				<table class="table w-full">
+					<thead>
+						<tr class="text-base-content/70">
+							<th>Title</th>
+							<th>Sector</th>
+							<th>Summary</th>
+							<th>Details</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% projects.forEach(project => { %>
+						<tr>
+							<td class="font-semibold"><%= project.title %></td>
+							<td>
+								<a
+									href="/solutions/projects?sector=<%= project.sector %>"
+									class="btn btn-xs btn-outline min-h-fit btn-primary">
+									<%= project.sector %>
+								</a>
+							</td>
+							<td class="max-w-md text-sm"><%= project.summary_short %></td>
+							<td>
+								<a
+									href="/solutions/projects/<%= project.id %>"
+									class="btn btn-xs btn-secondary">
+									Details
+								</a>
+							</td>
+						</tr>
+						<% }) %>
+					</tbody>
+				</table>
+			</div>
+			<% } else { %>
+			<p class="text-center text-base-content/70">No projects found for this sector.</p>
+			<% } %>
+		</section>
+	</body>
+</html>

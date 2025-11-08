@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('partials/imports') %>
+    <title><%= project.title %> | Project Details</title>
+  </head>
+
+  <body class="bg-base-100">
+    <%- include('partials/header') %>
+
+    <!-- Hero Section -->
+    <section class="hero min-h-[60vh] bg-base-200">
+      <div class="hero-content flex-col lg:flex-row gap-10">
+        <!-- Project Image -->
+        <img
+          src="<%= project.feature_img_url %>"
+          alt="<%= project.title %> Image"
+          class="max-w-md rounded-2xl shadow-2xl object-cover"
+        />
+
+        <!-- Project Title & Summary -->
+        <div>
+          <h1 class="text-5xl font-bold text-primary mb-4"><%= project.title %></h1>
+          <p class="text-lg text-base-content/80 mb-4">
+            Below, you will find detailed information about the project:
+            <span class="font-semibold"><%= project.title %></span>
+          </p>
+          <a
+            href="<%= project.original_source_url %>"
+            target="_blank"
+            class="btn btn-primary"
+          >
+            View Original Source
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Details -->
+    <section class="max-w-5xl mx-auto px-6 py-12">
+      <!-- Introduction -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-semibold mb-2">Introduction</h2>
+        <p class="text-base-content/80 leading-relaxed">
+          <%= project.intro_short %>
+        </p>
+      </div>
+
+      <!-- Impact -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-semibold mb-2">Impact</h2>
+        <p class="text-base-content/80 leading-relaxed">
+          <%= project.impact %>
+        </p>
+      </div>
+
+      <!-- Random Quote -->
+      <div id="quote-container" class="mb-10 bg-base-200 rounded-xl p-6 shadow-sm">
+        <h2 class="text-2xl font-semibold mb-2">Inspiration</h2>
+        <p id="quote" class="italic text-base-content/80 mb-2">Loading quote...</p>
+        <p id="author" class="text-sm text-base-content/60"></p>
+      </div>
+
+      <!-- Sector ID (optional info) -->
+      <div class="border-t border-base-300 pt-4 text-sm text-base-content/60 mb-6">
+        <p>Sector ID: <%= project.sector_id %></p>
+        <p>Project ID: <%= project.id %></p>
+      </div>
+
+      <!-- Back Button -->
+      <div class="text-center">
+        <a href="#" onclick="history.back(); return false;" class="btn btn-outline btn-secondary">
+          ← Go Back
+        </a>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        try {
+          const res = await fetch("https://dummyjson.com/quotes/random");
+          const data = await res.json();
+
+          // Update quote content
+          document.getElementById("quote").textContent = `"${data.quote}"`;
+          document.getElementById("author").textContent = `— ${data.author}`;
+        } catch (error) {
+          document.getElementById("quote").textContent = "Failed to load quote.";
+          document.getElementById("author").textContent = "";
+          console.error("Error fetching quote:", error);
+        }
+      });
+    </script>
+  </body>
+</html>

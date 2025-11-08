@@ -1,0 +1,29 @@
+<header class="mb-4">
+	<nav class="navbar bg-base-300">
+		<div class="container mx-auto px-4">
+			<a class="btn btn-ghost text-xl" href="/">♻️ Climate Solutions</a>
+			
+			<div class="flex justify-between">
+				<ul class="menu menu-horizontal px-1 gap-3">
+					<% pages.forEach(page => { %>
+						<li>
+							<% if (currentTitle === page.title) { %>
+							<span class="bg-black text-white no-hover cursor-default"><%= page.title %></span>
+							<% } else { %>
+							<a href="<%= page.address %>"><%= page.title %></a>
+							<% } %>
+						</li>
+					<% }); %>
+				</ul>
+				<div class="dropdown dropdown-end">
+					<div tabindex="0" role="button" class="btn btn-ghost m-1">Sector 🔽</div>
+					<ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+						<% sectors.forEach(sector => { %>
+							<li><a href="/solutions/projects?sector=<%= encodeURIComponent(sector) %>"><%= sector %></a></li>
+						<% }); %>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>

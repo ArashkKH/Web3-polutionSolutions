@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<%- include('partials/imports') %>
+		<title>Climate Solutions</title>
+	</head>
+	
+	<body>
+		
+		<%- include('partials/header') %>
+		<main>
+			<section class="container mx-auto">
+				<div class="hero min-h-[30vh]">
+					<div class="hero">
+						<div class="hero-content text-start">
+							<div class="max-w-md">
+								<h1 class="text-5xl font-bold">Project Mania</h1>
+
+								<p class="py-6">
+									Please consoder checking on our various projects that has been
+									done over the past years.
+								</p>
+
+								<a href="/solutions/projects" class="btn btn-primary"
+									>Our Projects</a
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="project__Demos_Container container mx-auto">
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+
+					<% projects.forEach(function(project) { %>
+						<div class="card bg-base-100 shadow-md hover:shadow-xl transition-shadow duration-300">
+							<a href="/solutions/projects/<%= project.id %>">
+							<figure>
+									<img src="<%= project.feature_img_url %>" alt="<%= project.title %>" />
+								</figure>
+							</a>
+							<div class="card-body">
+								<a href="/solutions/projects/<%= project.id %>">
+									<h2 class="card-title"><%= project.title %></h2>
+								</a>
+								<p><%= project.summary_short %></p>
+								<div class="card-actions justify-end">
+									<a href="/solutions/projects/<%= project.id %>" class="btn btn-primary">Learn More</a>
+								</div>
+							</div>
+						</div>
+					<% }); %>
+					
+									
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

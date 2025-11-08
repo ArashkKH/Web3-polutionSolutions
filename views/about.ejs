@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<%- include('partials/imports') %>
+		<title>About us</title>
+	</head>
+
+	<body>
+		<%- include('partials/header') %>
+		<main>
+			<section class="container mx-auto">
+				<section class="hero min-h-[50vh]">
+					<div class="hero-content flex-col lg:flex-row gap-10">
+						<!-- Left: Image -->
+						<div class="max-w-sm w-full">
+							<img
+								src="/images/ArashKH.jpg"
+								alt="A workspace that represents me"
+								class="rounded-2xl shadow-2xl w-full object-cover" />
+						</div>
+
+						<!-- Right: Text -->
+						<div class="max-w-xl">
+							<h1 class="text-5xl font-bold mb-4">About</h1>
+							<p class="py-2 text-lg text-base-content/80">
+								Hey, I'm
+								<a
+									href="https://arashkh.com"
+									class="text-primary underline"
+									target="_blank"
+									>Arash</a
+								>.🦦
+								<br />
+								I'm a Front-End Developer who moved to Canada from
+								<a  class="text-primary underline" href="https://en.wikipedia.org/wiki/Iran" target="_blank">Iran</a
+								>. Currently, I'm studying Computer Programming (CPP) at Seneca
+								College in Toronto. I worked for 3 years as a Website and Front-End
+								Developer. For someone who loves design and enjoys calculating and
+								problem-solving, I find it the perfect role for me.
+							</p>
+							<p class="py-2 text-base text-base-content/70">
+								Away from my keyboard, I enjoy exploring new hobbies, socializing,
+								hiking, and going on long trail bicycle rides.🚵🏻
+							</p>
+						</div>
+					</div>
+				</section>
+			</section>
+		</main>
+	</body>
+</html>
